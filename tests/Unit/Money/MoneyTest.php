@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Money;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use StrictlyPHP\Value\Contracts\Money\Exception\InvalidCurrencyException;
 use StrictlyPHP\Value\Implementation\Money\Currency;
 use StrictlyPHP\Value\Implementation\Money\Money;
-use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
 class MoneyTest extends TestCase
 {

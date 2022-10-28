@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace StrictlyPHP\Value\Implementation\Identity;
 
+use Ramsey\Uuid\Uuid;
 use StrictlyPHP\Value\Contracts\Identity\IdInterface;
 use StrictlyPHP\Value\Contracts\ValueObjectInterface;
-use Ramsey\Uuid\Uuid;
 
 class Id implements IdInterface
 {
