@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DateTime;
 
+use PHPUnit\Framework\TestCase;
 use StrictlyPHP\Value\Implementation\DateTime\Date;
 use StrictlyPHP\Value\Implementation\DateTime\DateTimeUtc;
 use StrictlyPHP\Value\Implementation\DateTime\Timezone;
-use PHPUnit\Framework\TestCase;
 
 class DateTest extends TestCase
 {

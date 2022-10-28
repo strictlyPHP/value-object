@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace StrictlyPHP\Value\Implementation\Money;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Money\Exception\UnknownCurrencyException;
 use StrictlyPHP\Value\Contracts\Money\CurrencyInterface;
 use StrictlyPHP\Value\Contracts\Money\Exception\InvalidCurrencyException;
 use StrictlyPHP\Value\Contracts\Money\MoneyInterface;
 use StrictlyPHP\Value\Contracts\ValueObjectInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Money\Exception\UnknownCurrencyException;
 
 class Money implements MoneyInterface
 {

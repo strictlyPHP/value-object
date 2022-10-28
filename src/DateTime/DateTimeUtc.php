@@ -3,10 +3,10 @@
 declare(strict_types=1);
 namespace StrictlyPHP\Value\Implementation\DateTime;
 
+use DateTimeImmutable;
 use StrictlyPHP\Value\Contracts\DateTime\DateTimeInterface;
 use StrictlyPHP\Value\Contracts\DateTime\TimezoneInterface;
 use StrictlyPHP\Value\Contracts\ValueObjectInterface;
-use DateTimeImmutable;
 
 class DateTimeUtc implements DateTimeInterface
 {

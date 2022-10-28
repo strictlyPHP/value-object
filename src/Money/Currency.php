@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace StrictlyPHP\Value\Implementation\Money;
 
+use Money\Currencies\ISOCurrencies;
 use StrictlyPHP\Value\Contracts\Money\CurrencyInterface;
 use StrictlyPHP\Value\Contracts\Money\Exception\InvalidCurrencyException;
 use StrictlyPHP\Value\Contracts\ValueObjectInterface;
-use Money\Currencies\ISOCurrencies;
 
 class Currency implements CurrencyInterface
 {
