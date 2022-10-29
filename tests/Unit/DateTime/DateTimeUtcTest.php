@@ -48,6 +48,18 @@ class DateTimeUtcTest extends TestCase
         $this->assertEquals($isAfter, $dateA->isAfter($dateB, $inclusive));
     }
 
+    public function testDayOfPastMonth(): void
+    {
+        $date = DateTimeUtc::fromString('2022-07-11 00:00:00', Timezone::fromString('Europe/London'))->dayOfPastMonth(20, 3, Timezone::fromString('Europe/London'));
+        self::assertEquals('2022-04-20 00:00:00', $date->format('Y-m-d H:i:s', Timezone::fromString('Europe/London')));
+    }
+
+    public function testLastDayOfPastMonth(): void
+    {
+        $date = DateTimeUtc::fromString('2022-07-11 00:00:00', Timezone::fromString('Europe/London'))->lastDayOfPastMonth(3, Timezone::fromString('Europe/London'));
+        self::assertEquals('2022-04-30 00:00:00', $date->format('Y-m-d H:i:s', Timezone::fromString('Europe/London')));
+    }
+
     public function testFirstDayOfLastMonth(): void
     {
         $date = DateTimeUtc::fromString('2022-07-01 00:00:00', Timezone::fromString('Europe/London'))->firstDayOfLastMonth(Timezone::fromString('Europe/London'));
