@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace StrictlyPHP\Value\Implementation\Identity;
 
-use Ramsey\Uuid\Uuid;
-use StrictlyPHP\Value\Contracts\Identity\IdInterface;
+use Ramsey\Uuid\Uuid as RamseyUuid;
+use StrictlyPHP\Value\Contracts\Identity\UuidInterface;
 use StrictlyPHP\Value\Contracts\ValueObjectInterface;
 
-class Id implements IdInterface
+class Uuid implements UuidInterface
 {
     private string $value;
 
@@ -20,31 +20,21 @@ class Id implements IdInterface
 
     public static function fromRandom(): self
     {
-        return new self(Uuid::uuid4()->toString());
+        return new self(RamseyUuid::uuid4()->toString());
     }
 
-    public static function fromUuid(string $uuid): self
+    public static function fromString(string $uuid): self
     {
-        if (1 === preg_match('/^(\w{8}(-\w{4}){3}-\w{12}?)/i', $uuid)) {
-            return new Id($uuid);
+        if (RamseyUuid::isValid($uuid)) {
+            return new Uuid($uuid);
         } else {
             throw new \InvalidArgumentException(sprintf('%s is not a uuid', $uuid));
         }
     }
 
-    public static function fromString(string $value): self
-    {
-        return new self($value);
-    }
-
     public function getValue(): string
     {
         return $this->value;
-    }
-
-    public function isUuid(): bool
-    {
-        return Uuid::isValid($this->value);
     }
 
     public function __toString(): string
