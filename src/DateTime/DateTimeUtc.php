@@ -94,6 +94,32 @@ class DateTimeUtc implements DateTimeInterface
         );
     }
 
+    public function dayOfPastMonth(int $dayOfMonth, int $monthsAgo, TimezoneInterface $timezone, string $time = '00:00:00'): DateTimeInterface
+    {
+        return DateTimeUtc::fromString(
+            $this->toPhpDateTime()
+                ->setTimezone(new \DateTimeZone($timezone->getValue()))
+                ->modify('first day of this month')
+                ->modify(sprintf('-%d month', $monthsAgo))
+                ->modify(sprintf('+%d day', $dayOfMonth - 1))
+                ->format(sprintf('Y-m-d %s', $time)),
+            $timezone
+        );
+    }
+
+    public function lastDayOfPastMonth(int $monthsAgo, TimezoneInterface $timezone, string $time = '00:00:00'): DateTimeInterface
+    {
+        return DateTimeUtc::fromString(
+            $this->toPhpDateTime()
+                ->setTimezone(new \DateTimeZone($timezone->getValue()))
+                ->modify('first day of this month')
+                ->modify(sprintf('-%d month', $monthsAgo))
+                ->modify('last day of this month')
+                ->format(sprintf('Y-m-d %s', $time)),
+            $timezone
+        );
+    }
+
     public function firstDayOfLastMonth(TimezoneInterface $timezone, string $time = '00:00:00'): self
     {
         return DateTimeUtc::fromString(
