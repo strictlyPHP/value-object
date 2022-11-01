@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "253486f1b3d451ea2a1b7ce979040a27",
+    "content-hash": "2abb2caaf6f3d9d5bf8e26f8e6056dea",
     "packages": [
         {
             "name": "brick/math",
@@ -438,16 +438,16 @@
         },
         {
             "name": "strictlyphp/value-object-contracts",
-            "version": "0.0.13",
+            "version": "0.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/strictlyPHP/value-object-contracts.git",
-                "reference": "d2da87c309ac7e0c6d15beed1636dd4556c17d4a"
+                "reference": "7f22aaee8affca15b85037e6bef894ac305229d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strictlyPHP/value-object-contracts/zipball/d2da87c309ac7e0c6d15beed1636dd4556c17d4a",
-                "reference": "d2da87c309ac7e0c6d15beed1636dd4556c17d4a",
+                "url": "https://api.github.com/repos/strictlyPHP/value-object-contracts/zipball/7f22aaee8affca15b85037e6bef894ac305229d2",
+                "reference": "7f22aaee8affca15b85037e6bef894ac305229d2",
                 "shasum": ""
             },
             "require": {
@@ -477,9 +477,9 @@
             "description": "Generic abstractions related to value objects",
             "support": {
                 "issues": "https://github.com/strictlyPHP/value-object-contracts/issues",
-                "source": "https://github.com/strictlyPHP/value-object-contracts/tree/0.0.13"
+                "source": "https://github.com/strictlyPHP/value-object-contracts/tree/0.0.14"
             },
-            "time": "2022-10-29T16:07:30+00:00"
+            "time": "2022-11-01T18:26:20+00:00"
         },
         {
             "name": "symfony/polyfill-php81",

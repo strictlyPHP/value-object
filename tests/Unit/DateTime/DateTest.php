@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DateTime;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use StrictlyPHP\Value\Implementation\DateTime\Date;
 use StrictlyPHP\Value\Implementation\DateTime\DateTimeUtc;
@@ -11,6 +12,20 @@ use StrictlyPHP\Value\Implementation\DateTime\Timezone;
 
 class DateTest extends TestCase
 {
+    public function testFromString(): void
+    {
+        $date = Date::fromString('01-03-2022');
+        self::assertEquals(2022, $date->getYear());
+        self::assertEquals(3, $date->getMonth());
+        self::assertEquals(1, $date->getDay());
+    }
+
+    public function testFromStringFails(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Date::fromString('hello!');
+    }
+
     public function testFromDateTimeUtcSeptember(): void
     {
         $dateimeUtc = DateTimeUtc::fromString('2022-10-03 15:49:18', Timezone::fromString('Europe/London'));
