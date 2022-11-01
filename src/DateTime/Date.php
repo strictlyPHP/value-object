@@ -21,6 +21,24 @@ class Date implements DateInterface
     ) {
     }
 
+    public static function fromString(string $dateString): self
+    {
+        $date = date_parse($dateString);
+
+        if (
+            $date['year'] === false ||
+            $date['month'] === false ||
+            $date['day'] === false
+        ) {
+            throw new \InvalidArgumentException(sprintf('%s is an invalid date', $dateString));
+        }
+        return new self(
+            $date['year'],
+            $date['month'],
+            $date['day']
+        );
+    }
+
     /**
      * @throws InvalidDateException
      */
@@ -92,5 +110,20 @@ class Date implements DateInterface
     public function jsonSerialize(): string
     {
         return $this->getValue();
+    }
+
+    public function getYear(): int
+    {
+        return $this->year;
+    }
+
+    public function getMonth(): int
+    {
+        return $this->month;
+    }
+
+    public function getDay(): int
+    {
+        return $this->day;
     }
 }
