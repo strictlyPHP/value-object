@@ -21,9 +21,10 @@
     "require": {
         "php": ">=8.0",
         "ext-intl": "*",
-        "strictlyphp/value-object-contracts": "^0.0.14",
-        "ramsey/uuid": "^4.3",
-        "moneyphp/money": "^3.3 | ^4.0"
+        "strictlyphp/value-object-contracts": "^0.0.17",
+        "moneyphp/money": "^3.3 | ^4.0",
+        "nesbot/carbon": "^2.23",
+        "ramsey/uuid": "^4.0"
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^11.1",

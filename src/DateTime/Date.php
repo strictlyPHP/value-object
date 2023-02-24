@@ -3,6 +3,7 @@
 declare(strict_types=1);
 namespace StrictlyPHP\Value\Implementation\DateTime;
 
+use Carbon\Carbon;
 use StrictlyPHP\Value\Contracts\DateTime\DateInterface;
 use StrictlyPHP\Value\Contracts\DateTime\Exception\InvalidDateException;
 use StrictlyPHP\Value\Contracts\DateTime\TimezoneInterface;
@@ -17,7 +18,7 @@ class Date implements DateInterface
     private function __construct(
         private int $year,
         private int $month,
-        private int $day
+        private int $day,
     ) {
     }
 
@@ -32,6 +33,7 @@ class Date implements DateInterface
         ) {
             throw new \InvalidArgumentException(sprintf('%s is an invalid date', $dateString));
         }
+
         return new self(
             $date['year'],
             $date['month'],
@@ -125,5 +127,35 @@ class Date implements DateInterface
     public function getDay(): int
     {
         return $this->day;
+    }
+
+    public function addDays(int $days): DateInterface
+    {
+        $carbonDate = Carbon::createFromDate($this->year, $this->month, $this->day)->addDays($days);
+        return new self(
+            $carbonDate->year,
+            $carbonDate->month,
+            $carbonDate->day
+        );
+    }
+
+    public function addMonths(int $months): DateInterface
+    {
+        $carbonDate = Carbon::createFromDate($this->year, $this->month, $this->day)->addMonths($months);
+        return new self(
+            $carbonDate->year,
+            $carbonDate->month,
+            $carbonDate->day
+        );
+    }
+
+    public function addYears(int $years): DateInterface
+    {
+        $carbonDate = Carbon::createFromDate($this->year, $this->month, $this->day)->addYears($years);
+        return new self(
+            $carbonDate->year,
+            $carbonDate->month,
+            $carbonDate->day
+        );
     }
 }

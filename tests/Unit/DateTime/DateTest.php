@@ -63,4 +63,59 @@ class DateTest extends TestCase
         $dateimeUtc = Date::fromDateTimeUtc(DateTimeUtc::fromString('2022-10-03 15:49:18', Timezone::fromString('Europe/London')), Timezone::fromString('Europe/London'));
         self::assertEquals('2022-10-03', (string) $dateimeUtc);
     }
+
+    /**
+     * @dataProvider daysProvider
+     */
+    public function testItAddsDays(string $startDateString, string $endDateString, int $daysToAdd): void
+    {
+        $date = Date::fromString($startDateString);
+        $newDate = $date->addDays($daysToAdd);
+        self::assertEquals($endDateString, $newDate->getValue());
+    }
+
+    /**
+     * @dataProvider monthsProvider
+     */
+    public function testItAddsMonths(string $startDateString, string $endDateString, int $monthsToAdd): void
+    {
+        $date = Date::fromString($startDateString);
+        $newDate = $date->addMonths($monthsToAdd);
+        self::assertEquals($endDateString, $newDate->getValue());
+    }
+
+    public function testItAddsYears(): void
+    {
+        $date = Date::fromString('2023-01-01');
+        $newDate = $date->addYears(3);
+        self::assertEquals('2026-01-01', $newDate->getValue());
+    }
+
+    public function daysProvider(): array
+    {
+        return [
+            ['2023-01-01', '2023-01-11', 10],
+            ['2023-01-20', '2023-02-04', 15],
+            ['2023-02-20', '2023-03-07', 15],
+            ['2024-02-20', '2024-03-06', 15],
+            ['2023-03-20', '2023-04-04', 15],
+            ['2023-04-20', '2023-05-05', 15],
+            ['2023-05-20', '2023-06-04', 15],
+            ['2023-06-20', '2023-07-05', 15],
+            ['2023-07-20', '2023-08-04', 15],
+            ['2023-08-20', '2023-09-04', 15],
+            ['2023-09-20', '2023-10-05', 15],
+            ['2023-10-20', '2023-11-04', 15],
+            ['2023-11-20', '2023-12-05', 15],
+            ['2023-12-20', '2024-01-04', 15],
+        ];
+    }
+
+    public function monthsProvider(): array
+    {
+        return [
+            ['2023-01-01', '2023-11-01', 10],
+            ['2023-01-01', '2024-04-01', 15],
+        ];
+    }
 }
